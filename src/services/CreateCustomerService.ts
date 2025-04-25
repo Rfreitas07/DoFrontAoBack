@@ -9,7 +9,9 @@ class CreateCustomerService{
 async execute({name, email}: CreateCustomerProps){
 
 
-console.log("A ROTA FOI CHAMADA");
+if (!name || !email){
+    throw new Error("Preencha todos os campos")
+}
 
 const customer = await prismaClient.customer.create({
     data: {
